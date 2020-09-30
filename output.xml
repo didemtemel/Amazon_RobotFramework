@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.2.1 (Python 3.8.2 on darwin)" generated="20200930 14:00:43.345" rpa="false">
+<robot generator="Robot 3.2.1 (Python 3.8.2 on darwin)" generated="20200930 17:52:41.735" rpa="false">
 <suite id="s1" name="Amazon Web" source="/Users/didem/Documents/GitHubRepos/Amazon_RobotFramework/amazon-web/amazon_web.robot">
-<test id="s1-t1" name="Search Product">
+<test id="s1-t1" name="Filter by Spesific Category">
 <kw name="Open Amazon" library="amazon_web_resources">
 <kw name="Open Browser" library="SeleniumLibrary">
 <doc>Opens a new browser instance to the optional ``url``.</doc>
@@ -10,8 +10,8 @@
 <arg>${Browser}</arg>
 <arg>${REMOTE_URL}</arg>
 </arguments>
-<msg timestamp="20200930 14:00:43.998" level="INFO">Opening browser 'chrome' to base url 'https://www.amazon.com/'.</msg>
-<status status="PASS" starttime="20200930 14:00:43.997" endtime="20200930 14:00:50.452"></status>
+<msg timestamp="20200930 17:52:42.382" level="INFO">Opening browser 'chrome' to base url 'https://www.amazon.com/'.</msg>
+<status status="PASS" starttime="20200930 17:52:42.382" endtime="20200930 17:52:48.439"></status>
 </kw>
 <kw name="Run Keyword And Continue On Failure" library="BuiltIn">
 <doc>Runs the keyword and continues execution even if a failure occurs.</doc>
@@ -20,95 +20,146 @@
 </arguments>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20200930 14:00:50.454" endtime="20200930 14:00:50.858"></status>
+<status status="PASS" starttime="20200930 17:52:48.443" endtime="20200930 17:52:48.807"></status>
 </kw>
-<status status="PASS" starttime="20200930 14:00:50.453" endtime="20200930 14:00:50.858"></status>
+<status status="PASS" starttime="20200930 17:52:48.440" endtime="20200930 17:52:48.807"></status>
 </kw>
-<status status="PASS" starttime="20200930 14:00:43.997" endtime="20200930 14:00:50.859"></status>
+<status status="PASS" starttime="20200930 17:52:42.381" endtime="20200930 17:52:48.808"></status>
 </kw>
-<kw name="Check Search Bar" library="amazon_web_resources">
+<kw name="Click Category Icon" library="amazon_web_resources">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${layout.category.icon.field}</arg>
+</arguments>
+<status status="PASS" starttime="20200930 17:52:48.810" endtime="20200930 17:52:48.939"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${layout.category.icon.field}</arg>
+</arguments>
+<msg timestamp="20200930 17:52:48.940" level="INFO">Clicking element 'xpath=//a[@id='nav-hamburger-menu']'.</msg>
+<status status="PASS" starttime="20200930 17:52:48.939" endtime="20200930 17:52:49.680"></status>
+</kw>
+<status status="PASS" starttime="20200930 17:52:48.808" endtime="20200930 17:52:49.680"></status>
+</kw>
+<kw name="Check Category Menu" library="amazon_web_resources">
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
 <arguments>
-<arg>${layout.searchBar.input}</arg>
+<arg>${layout.category.menu.title.field}</arg>
 </arguments>
-<status status="PASS" starttime="20200930 14:00:50.861" endtime="20200930 14:00:51.276"></status>
+<status status="PASS" starttime="20200930 17:52:49.681" endtime="20200930 17:52:49.717"></status>
 </kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
 <arguments>
-<arg>${layout.searchBar.input}</arg>
+<arg>${layout.category.menu.title.field}</arg>
+<arg>${layout.category.menu.title.text}</arg>
 </arguments>
-<msg timestamp="20200930 14:00:51.290" level="INFO">Current page contains element 'xpath=//input[@id='twotabsearchtextbox']'.</msg>
-<status status="PASS" starttime="20200930 14:00:51.276" endtime="20200930 14:00:51.290"></status>
+<status status="PASS" starttime="20200930 17:52:49.718" endtime="20200930 17:52:49.748"></status>
 </kw>
-<status status="PASS" starttime="20200930 14:00:50.859" endtime="20200930 14:00:51.290"></status>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${layout.category.menu.title.field}</arg>
+<arg>${layout.category.menu.title.text}</arg>
+</arguments>
+<msg timestamp="20200930 17:52:49.774" level="INFO">Element 'xpath=//div[@class='hmenu-item hmenu-title ']' contains text 'SHOP BY CATEGORY'.</msg>
+<status status="PASS" starttime="20200930 17:52:49.748" endtime="20200930 17:52:49.774"></status>
 </kw>
-<kw name="Input Product Name Search Bar" library="amazon_web_resources">
+<status status="PASS" starttime="20200930 17:52:49.680" endtime="20200930 17:52:49.774"></status>
+</kw>
+<kw name="Click Category Menu Specific Category" library="amazon_web_resources">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${layout.category.menu.electronics.field}</arg>
+<arg>${layout.category.menu.electronics.text}</arg>
+</arguments>
+<status status="PASS" starttime="20200930 17:52:49.778" endtime="20200930 17:52:49.972"></status>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${layout.category.menu.electronics.field}</arg>
+<arg>${layout.category.menu.electronics.text}</arg>
+</arguments>
+<msg timestamp="20200930 17:52:49.991" level="INFO">Element 'xpath=//*[@id="hmenu-content"]/ul[1]/li[6]/a' contains text 'Electronics'.</msg>
+<status status="PASS" starttime="20200930 17:52:49.972" endtime="20200930 17:52:49.991"></status>
+</kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <doc>Click the element identified by ``locator``.</doc>
 <arguments>
-<arg>${layout.searchBar.input}</arg>
+<arg>${layout.category.menu.electronics.field}</arg>
 </arguments>
-<msg timestamp="20200930 14:00:51.291" level="INFO">Clicking element 'xpath=//input[@id='twotabsearchtextbox']'.</msg>
-<status status="PASS" starttime="20200930 14:00:51.291" endtime="20200930 14:00:51.414"></status>
+<msg timestamp="20200930 17:52:49.991" level="INFO">Clicking element 'xpath=//*[@id="hmenu-content"]/ul[1]/li[6]/a'.</msg>
+<status status="PASS" starttime="20200930 17:52:49.991" endtime="20200930 17:52:50.115"></status>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" starttime="20200930 17:52:49.775" endtime="20200930 17:52:50.115"></status>
+</kw>
+<kw name="Click Category Menu Specific Sub Category" library="amazon_web_resources">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on the current page.</doc>
 <arguments>
-<arg>${layout.searchBar.input}</arg>
-<arg>${search.product.text}</arg>
+<arg>${layout.category.menu.sub.headphones.text}</arg>
 </arguments>
-<msg timestamp="20200930 14:00:51.415" level="INFO">Typing text 'pencil' into text field 'xpath=//input[@id='twotabsearchtextbox']'.</msg>
-<status status="PASS" starttime="20200930 14:00:51.414" endtime="20200930 14:00:51.619"></status>
+<status status="PASS" starttime="20200930 17:52:50.117" endtime="20200930 17:52:50.165"></status>
 </kw>
-<status status="PASS" starttime="20200930 14:00:51.290" endtime="20200930 14:00:51.620"></status>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${layout.category.menu.sub.headphones.field}</arg>
+<arg>${layout.category.menu.sub.headphones.text}</arg>
+</arguments>
+<msg timestamp="20200930 17:52:50.226" level="INFO">Element 'xpath=//*[@id="hmenu-content"]/ul[5]/li[9]/a' contains text 'Headphones'.</msg>
+<status status="PASS" starttime="20200930 17:52:50.166" endtime="20200930 17:52:50.226"></status>
 </kw>
-<kw name="Click Search Submit" library="amazon_web_resources">
 <kw name="Click Element" library="SeleniumLibrary">
 <doc>Click the element identified by ``locator``.</doc>
 <arguments>
-<arg>${layout.searchBar.submit.field}</arg>
+<arg>${layout.category.menu.sub.headphones.field}</arg>
 </arguments>
-<msg timestamp="20200930 14:00:51.621" level="INFO">Clicking element 'xpath=//div[@class='nav-search-submit nav-sprite']'.</msg>
-<status status="PASS" starttime="20200930 14:00:51.621" endtime="20200930 14:00:52.332"></status>
+<msg timestamp="20200930 17:52:50.227" level="INFO">Clicking element 'xpath=//*[@id="hmenu-content"]/ul[5]/li[9]/a'.</msg>
+<status status="PASS" starttime="20200930 17:52:50.226" endtime="20200930 17:52:51.078"></status>
 </kw>
-<status status="PASS" starttime="20200930 14:00:51.620" endtime="20200930 14:00:52.332"></status>
+<status status="PASS" starttime="20200930 17:52:50.116" endtime="20200930 17:52:51.078"></status>
 </kw>
-<kw name="Check Search Result" library="amazon_web_resources">
+<kw name="Check Specific Category Filter" library="amazon_web_resources">
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
 <arguments>
 <arg>${search.result.toolbar.title.field}</arg>
 </arguments>
-<status status="PASS" starttime="20200930 14:00:52.335" endtime="20200930 14:00:52.812"></status>
+<status status="PASS" starttime="20200930 17:52:51.079" endtime="20200930 17:52:51.468"></status>
 </kw>
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
 <arg>${search.result.toolbar.title.field}</arg>
 </arguments>
-<msg timestamp="20200930 14:00:52.822" level="INFO">Current page contains element 'xpath=//h1[@class='a-size-base s-desktop-toolbar a-text-normal']'.</msg>
-<status status="PASS" starttime="20200930 14:00:52.812" endtime="20200930 14:00:52.823"></status>
+<msg timestamp="20200930 17:52:51.735" level="INFO">Current page contains element 'xpath=//h1[@class='a-size-base s-desktop-toolbar a-text-normal']'.</msg>
+<status status="PASS" starttime="20200930 17:52:51.469" endtime="20200930 17:52:51.735"></status>
 </kw>
 <kw name="Element Should Contain" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
 <arguments>
 <arg>${search.result.toolbar.title.field}</arg>
-<arg>${search.product.text}</arg>
+<arg>${layout.category.menu.sub.headphones.text}</arg>
 </arguments>
-<msg timestamp="20200930 14:00:52.876" level="INFO">Element 'xpath=//h1[@class='a-size-base s-desktop-toolbar a-text-normal']' contains text 'pencil'.</msg>
-<status status="PASS" starttime="20200930 14:00:52.823" endtime="20200930 14:00:52.877"></status>
+<msg timestamp="20200930 17:52:52.116" level="INFO">Element 'xpath=//h1[@class='a-size-base s-desktop-toolbar a-text-normal']' contains text 'Headphones'.</msg>
+<status status="PASS" starttime="20200930 17:52:51.736" endtime="20200930 17:52:52.116"></status>
 </kw>
-<status status="PASS" starttime="20200930 14:00:52.333" endtime="20200930 14:00:52.877"></status>
+<status status="PASS" starttime="20200930 17:52:51.078" endtime="20200930 17:52:52.116"></status>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary" type="teardown">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20200930 14:00:52.878" endtime="20200930 14:00:53.092"></status>
+<status status="PASS" starttime="20200930 17:52:52.117" endtime="20200930 17:52:52.309"></status>
 </kw>
-<status status="PASS" starttime="20200930 14:00:43.996" endtime="20200930 14:00:53.093" critical="yes"></status>
+<status status="PASS" starttime="20200930 17:52:42.380" endtime="20200930 17:52:52.309" critical="yes"></status>
 </test>
-<status status="PASS" starttime="20200930 14:00:43.346" endtime="20200930 14:00:53.096"></status>
+<status status="PASS" starttime="20200930 17:52:41.737" endtime="20200930 17:52:52.311"></status>
 </suite>
 <statistics>
 <total>

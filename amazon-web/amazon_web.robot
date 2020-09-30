@@ -4,8 +4,6 @@ Library           SeleniumLibrary
 Library           String
 Library           RequestsLibrary
 Library           FakerLibrary
-Library           ImapLibrary
-Library           DateTime
 Library           Collections
 
 ***Comments***
@@ -28,7 +26,6 @@ Check HomePage
     Check Discover Amazon
     [Teardown]    Close Browser
 
-
 Search Product
     Open Amazon
     Check Search Bar
@@ -36,3 +33,24 @@ Search Product
     Click Search Submit
     Check Search Result
     [Teardown]    Close Browser
+
+Search Product With Spesific Category
+    Open Amazon
+    Check Search Bar
+    Click Search Categories All
+    Click Search Specific Category
+    Input Product Name Search Bar
+    Click Search Submit
+    Check Search Specific Category
+    Check Search Result
+    [Teardown]    Close Browser
+
+Filter by Spesific Category
+    Open Amazon
+    Click Category Icon
+    Check Category Menu
+    Click Category Menu Specific Category
+#    Check Category Menu Specific Category Title
+    Click Category Menu Specific Sub Category
+    Check Specific Category Filter
+   [Teardown]    Close Browser
