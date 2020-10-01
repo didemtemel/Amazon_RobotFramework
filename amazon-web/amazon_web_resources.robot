@@ -30,6 +30,7 @@ ${layout.category.menu.title.field}                                   xpath=//di
 ${layout.category.menu.electronics.field}                             xpath=//*[@id="hmenu-content"]/ul[1]/li[6]/a
 ${layout.category.menu.sub.headphones.field}                          xpath=//*[@id="hmenu-content"]/ul[5]/li[9]/a
 ${layout.category.menu.sub.title.field}                               xpath=//div[@class='hmenu-item hmenu-title ']
+${layout.chart.field}                                                 xpath=//div[@id='nav-cart-count-container']
 
 #-- Layout Texts --#
 ${layout.searchBar.category.artsAndCrafts.text}                       Arts & Crafts
@@ -48,10 +49,19 @@ ${search.product.text}                                                pencil
 ${shopPage.first.item.field}                                          xpath=//*[@id="search"]/div[1]/div[2]/div/span[3]/div[2]/div[2]/div/span/div/div/div/div/span/a/div
 
 #-- Item Detail Locators --#
-${itemDetail.addToChart.field}                                        xpath=/input[@id='add-to-cart-button']
+${itemDetail.addToChart.field}                                        xpath=//*[@id="add-to-cart-button"]
 
 #-- Item Detail Text --#
 ${itemDetail.addedToChart.popUp.text}                                 Added to Cart
+
+#-- Chart Page Locators --#
+${chart.page.title.field}
+
+#-- Chart Page Texts --#
+${chart.page.title.text}                                              Shopping Cart
+
+
+
 
 *** Keywords ***
 #Open Amazon#
@@ -130,6 +140,7 @@ Check Specific Category Filter
 
 #Add Item In The Chart#
 Click Item Detail
+    Sleep  2s
     Click Element    ${shopPage.first.item.field}
 
 Click Add To Chart
@@ -137,3 +148,10 @@ Click Add To Chart
 
 Check Added To Chart PopUp
     Page Should Contain    ${itemDetail.addedToChart.popUp.text}
+
+Click Chart
+    Wait Until Page Contains Element    ${layout.chart.field}
+    Click Element    ${layout.chart.field}
+
+Check Chart Page
+    Wait Until Page Contains    ${chart.page.title.text}
