@@ -64,4 +64,6 @@ Add Item in the Chart
     Click Item Detail
     Click Add To Chart
     Check Added To Chart PopUp
+    Click Chart
+    Check Chart Page
     [Teardown]    Close Browser
