@@ -44,7 +44,14 @@ ${search.result.toolbar.title.field}                                  xpath=//h1
 #-- Search Texts --#
 ${search.product.text}                                                pencil
 
+#-- Shop Locators --#
+${shopPage.first.item.field}                                          xpath=//*[@id="search"]/div[1]/div[2]/div/span[3]/div[2]/div[2]/div/span/div/div/div/div/span/a/div
 
+#-- Item Detail Locators --#
+${itemDetail.addToChart.field}                                        xpath=/input[@id='add-to-cart-button']
+
+#-- Item Detail Text --#
+${itemDetail.addedToChart.popUp.text}                                 Added to Cart
 
 *** Keywords ***
 #Open Amazon#
@@ -120,3 +127,13 @@ Check Specific Category Filter
     Wait Until Page Contains Element    ${search.result.toolbar.title.field}
     Page Should Contain Element    ${search.result.toolbar.title.field}
     Element Should Contain    ${search.result.toolbar.title.field}    ${layout.category.menu.sub.headphones.text}
+
+#Add Item In The Chart#
+Click Item Detail
+    Click Element    ${shopPage.first.item.field}
+
+Click Add To Chart
+    Click Element    ${itemDetail.addToChart.field}
+
+Check Added To Chart PopUp
+    Page Should Contain    ${itemDetail.addedToChart.popUp.text}
