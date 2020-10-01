@@ -54,3 +54,14 @@ Filter by Spesific Category
     Click Category Menu Specific Sub Category
     Check Specific Category Filter
    [Teardown]    Close Browser
+
+Add Item in the Chart
+    Open Amazon
+    Check Search Bar
+    Input Product Name Search Bar
+    Click Search Submit
+    Check Search Result
+    Click Item Detail
+    Click Add To Chart
+    Check Added To Chart PopUp
+    [Teardown]    Close Browser
